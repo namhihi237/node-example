@@ -13,6 +13,23 @@ app.get('/', (req, res) => {
 
 app.use('/', userRouter);
 
+// handle error
+app.use('/', (err, req, res, next) => {
+  const status = err.httpCode || 500;
+  res.status(status).send({
+    status,
+    message: err.message,
+  });
+});
+
+//handle 404
+app.use('/', (req, res) => {
+  res.status(404).send({
+    status: 404,
+    message: 'Not found',
+  });
+});
+
 db.connect((err) => {
   if (err) {
     console.log(err);
