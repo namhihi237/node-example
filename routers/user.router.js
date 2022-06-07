@@ -8,6 +8,7 @@ userRouter.get('/users', userController.getAll);
 userRouter.get('/users/:id', userController.deleteUser);
 // @ts-ignore
 userRouter.put('/users/:id', userController.update);
+// @ts-ignore
 userRouter.get('/users/:id', userController.user);
 
 module.exports = userRouter;
