@@ -44,8 +44,23 @@ const update = (req, res) => {
   }
 }
 
+const user = (req, res) => {
+  try {
+    const { id } = req.params;
+    db.query(`SELECT * FROM users WHERE id = ${id}`, (err, result) => {
+      if (err) {
+        throw err;
+      }
+      res.send(result);
+    });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+}
+
 module.exports = {
   getAll,
   deleteUser,
-  update
+  update,
+  user
 }
