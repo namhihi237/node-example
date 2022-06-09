@@ -3,6 +3,7 @@ require('dotenv').config();
 const db = require('./utils/database');
 
 const userRouter = require('./routers/user.router');
+const productRouter = require('./routers/product.router');
 
 const app = express();
 const PORT = process.env.PORT || 80;
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', userRouter);
+app.use('/', productRouter);
 
 // handle error
 app.use('/', (err, req, res, next) => {
